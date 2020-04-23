@@ -46,6 +46,8 @@ import org.xml.sax.SAXException;
  */
 public class AutorizationCredentialServiceClient {
 
+    private static final int CONNECTION_TIMEOUT = 5000;
+    
     public static void main(String[] args) throws Exception {
         // TODO code application logic here
         AutorizationCredentialServiceClient autorizationCredentialServiceClient = new AutorizationCredentialServiceClient();
@@ -75,6 +77,7 @@ public class AutorizationCredentialServiceClient {
             URL url = new URL(wsEndPoint);
             URLConnection connection = url.openConnection();
             HttpURLConnection httpConn = (HttpURLConnection) connection;
+            httpConn.setConnectTimeout(CONNECTION_TIMEOUT);
             ByteArrayOutputStream bout = new ByteArrayOutputStream();
             StringBuilder builder = new StringBuilder("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://org.apache.synapse/xsd\">");
             builder.append("<soapenv:Header/>");
